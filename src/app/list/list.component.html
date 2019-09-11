@@ -1,12 +1,12 @@
 <h2>Meine ToDo Liste.</h2>
 <input [(ngModel)]="searchtext"><button>search</button>
-<ul>
-  <li *ngFor="let todo of todos" (click)="toggle(todo)" [class.fertig]="todo.done">
-    {{todo.label}} <button (click)="loeschen(todo)">löschen</button>
-  </li>
-</ul>
-<p>Füge einige Aufgaben hinzu.</p>
-<input [(ngModel)]="newTodo.label">
-<button (click)="save()">
-  Hinzufügen
-</button>
+  <ul>
+    <li *ngFor="let todo of todos" (click)="toggle(todo)" [class.fertig]="todo.done">
+      {{todo.label}} <button (click)="loeschen(todo)">löschen</button>
+    </li>
+  </ul>
+  <p>Füge einige Aufgaben hinzu.</p>
+  <input [(ngModel)]="newTodo.label">
+  <button (click)="save()">
+    Hinzufügen
+  </button>

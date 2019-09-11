@@ -1,8 +1,5 @@
 <h2>Meine ToDo Liste.</h2>
-<input type="search" id="suche" placeholder="Suche" [(ngModel)]="searchTodo.label">
-<button (click)="search()">
-  Suchen
-</button>
+<input [(ngModel)]="searchtext"><button>search</button>
 <ul>
   <li *ngFor="let todo of todos" (click)="toggle(todo)" [class.fertig]="todo.done">
     {{todo.label}} <button (click)="loeschen(todo)">löschen</button>

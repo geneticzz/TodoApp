@@ -7,15 +7,14 @@ import {Todo} from '../models/Todo';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-  searchTodo: Todo;
+  searchtext = '';
   newTodo: Todo;
-  todos: Todo[] = [];
+  private _todos: Todo[] = [];
   constructor() {
-    this.todos.push(new Todo('Saufen'));
-    this.todos.push(new Todo('Schlafen'));
-    this.todos.push(new Todo('Essen'));
+    this._todos.push(new Todo('Saufen'));
+    this._todos.push(new Todo('Schlafen'));
+    this._todos.push(new Todo('Essen'));
     this.newTodo = new Todo('');
-    this.searchTodo = new Todo('');
   }
 
   ngOnInit() {
@@ -27,11 +26,18 @@ export class ListComponent implements OnInit {
   }
 
   save() {
-    this.todos.push(this.newTodo);
+    this._todos.push(this.newTodo);
     this.newTodo = new Todo('');
   }
 
+  get todos() {
+    this.searchtext = this.searchtext.toLowerCase();
+    return this._todos.filter(t => {
+      return t.label.toLowerCase().includes(this.searchtext);
+    });
+  }
+
   loeschen(todo: Todo) {
-    this.todos = this.todos.filter(t => t !== todo);
+    this._todos = this._todos.filter(t => t !== todo);
   }
 }

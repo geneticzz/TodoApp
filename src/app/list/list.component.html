@@ -1,12 +1,37 @@
-<h2>Meine ToDo Liste.</h2>
-<input [(ngModel)]="searchtext"><button>search</button>
-  <ul>
-    <li *ngFor="let todo of todos" (click)="toggle(todo)" [class.fertig]="todo.done">
-      {{todo.label}} <button (click)="loeschen(todo)">löschen</button>
-    </li>
-  </ul>
-  <p>Füge einige Aufgaben hinzu.</p>
-  <input [(ngModel)]="newTodo.label">
-  <button (click)="save()">
-    Hinzufügen
-  </button>
+<div class="container">
+  <div class="row">
+    <h2>Meine ToDo Liste.</h2>
+  </div>
+  <div class="row">
+    <input [(ngModel)]="searchtext" class="col-lg-11">
+    <button type="button" class="btn btn-primary col-lg-1">
+      <i class="material-icons">
+        search
+      </i>
+    </button>
+  </div>
+  <div class="row">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Bezeichnung</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let todo of todos" (click)="toggle(todo)" [class.fertig]="todo.done">
+        <td>{{todo.label}}</td>
+        <button (click)="loeschen(todo)" type="button" class="btn btn-danger">
+          <i class="material-icons">
+            delete_forever
+          </i>
+        </button>
+      </tr>
+      <p><br>Füge einige Aufgaben hinzu.</p>
+      <input [(ngModel)]="newTodo.label">
+      <button type="button" (click)="save()" class="btn btn-success"><i class="material-icons">
+        save
+      </i></button>
+      </tbody>
+    </table>
+  </div>
+</div>

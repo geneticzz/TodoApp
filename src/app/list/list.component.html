@@ -4,11 +4,6 @@
   </div>
   <div class="row">
     <input [(ngModel)]="searchtext" class="col-lg-11">
-    <button type="button" class="btn btn-primary col-lg-1">
-      <i class="material-icons">
-        search
-      </i>
-    </button>
   </div>
   <div class="row">
     <table class="table">
@@ -25,6 +20,9 @@
             delete_forever
           </i>
         </button>
+        <select [(ngModel)]="newTodo.category " class="form-control ">
+          <option *ngFor="let cat of categories " [ngValue]="cat ">{{cat.category}}</option>
+        </select>
       </tr>
       <p><br>Füge einige Aufgaben hinzu.</p>
       <input [(ngModel)]="newTodo.label">

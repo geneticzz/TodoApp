@@ -14,13 +14,13 @@ export class ListComponent implements OnInit {
   private _categorys: Category[] = [];
 
   constructor() {
-    this._todos.push(new Todo('Saufen'));
-    this._todos.push(new Todo('Schlafen'));
-    this._todos.push(new Todo('Essen'));
     this._categorys.push(new Category('Arbeit'));
     this._categorys.push(new Category('Freizeit'));
     this._categorys.push(new Category('Schule'));
-    this.newTodo = new Todo('');
+    this._todos.push(new Todo('Saufen', this._categorys[1]));
+    this._todos.push(new Todo('Schlafen', this._categorys[2]));
+    this._todos.push(new Todo('Essen', this._categorys[1]));
+    this.newTodo = new Todo('', null);
   }
 
   ngOnInit() {
@@ -33,7 +33,7 @@ export class ListComponent implements OnInit {
 
   save() {
     this._todos.push(this.newTodo);
-    this.newTodo = new Todo('');
+    this.newTodo = new Todo('',null);
   }
 
   get todos() {

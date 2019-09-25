@@ -1,9 +1,9 @@
+import {Category} from './Category';
+
 export class Todo {
   done: boolean;
-  category: any;
 
-  constructor(public label: string) {
-    this.category = null;
+  constructor(public label: string, public cat: Category) {
     this.done = false;
   }
 }

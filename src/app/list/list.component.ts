@@ -10,17 +10,17 @@ import {Category} from '../models/Category';
 export class ListComponent implements OnInit {
   searchtext = '';
   newTodo: Todo;
+  newCat: Category;
+  newCategory: Category;
   private _todos: Todo[] = [];
-  private _categorys: Category[] = [];
+  private _categories: Category[] = [];
 
   constructor() {
-    this._categorys.push(new Category('Arbeit'));
-    this._categorys.push(new Category('Freizeit'));
-    this._categorys.push(new Category('Schule'));
-    this._todos.push(new Todo('Saufen', this._categorys[1]));
-    this._todos.push(new Todo('Schlafen', this._categorys[2]));
-    this._todos.push(new Todo('Essen', this._categorys[1]));
-    this.newTodo = new Todo('', null);
+    this._todos.push(new Todo('Saufen'));
+    this._todos.push(new Todo('Schlafen'));
+    this._todos.push(new Todo('Essen'));
+    this.newTodo = new Todo('');
+    this._categories.push(new Category('Freizeit'));
   }
 
   ngOnInit() {
@@ -33,7 +33,13 @@ export class ListComponent implements OnInit {
 
   save() {
     this._todos.push(this.newTodo);
-    this.newTodo = new Todo('',null);
+    this._categories.push(this.newCat);
+    this.newTodo = new Todo('');
+    this.newCat = new Category('');
+  }
+
+  get categories() {
+    return this._categories;
   }
 
   get todos() {
@@ -41,10 +47,6 @@ export class ListComponent implements OnInit {
     return this._todos.filter(t => {
       return t.label.toLowerCase().includes(this.searchtext);
     });
-  }
-
-  get categories() {
-    return this._categorys;
   }
 
   loeschen(todo: Todo) {

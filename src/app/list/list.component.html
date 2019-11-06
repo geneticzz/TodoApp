@@ -8,13 +8,20 @@
   <div class="row">
     <table class="table">
       <thead>
-      <tr>
         <th>Bezeichnung</th>
-      </tr>
+      <th>Kategorie</th>
+        <th>Löschen</th>
       </thead>
       <tbody>
-      <tr *ngFor="let todo of todos" (click)="toggle(todo)" [class.fertig]="todo.done">
+      <tr *ngFor="let todo of todos" (click)="toggle(todo)" [class.fertig]="todo.done" >
         <td>{{todo.label}}</td>
+        <td>
+          <select [(ngModel)]="newTodo.cat" class="form-control ">
+          <option *ngFor="let cat of categories " [ngValue]="cat">
+            {{cat.label}}
+          </option>
+        </select>
+        </td>
         <td>
         <button (click)="loeschen(todo)" type="button" class="btn btn-danger">
           <i class="material-icons">
@@ -23,13 +30,12 @@
         </button>
         </td>
         <td>
-        <select [(ngModel)]="newTodo.cat" class="form-control ">
-          <option *ngFor="let cat of categories " [ngValue]="cat">{{cat.category}}</option>
-        </select>
+
         </td>
       </tr>
       <p><br>Füge einige Aufgaben hinzu.</p>
-      <input [(ngModel)]="newTodo.label">
+      <input [(ngModel)]="newTodo.label" placeholder="ToDo"> <br/>
+      <input [(ngModel)]="newCat" placeholder="Kategorie">
       <button type="button" (click)="save()" class="btn btn-success"><i class="material-icons">
         save
       </i></button>
